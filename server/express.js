@@ -1,10 +1,13 @@
-const express = require('express');
-const http = require('http');
-const path = require('path');
+import express from 'express';
+import http from 'http';
+import path from 'path';
+import routes from './routes/user.route'
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.use('/api', routes);
 
 app.get('*', (req, res) => {
 	app.sendFile(path.join(__dirname, '../client/dist/index.html'));
