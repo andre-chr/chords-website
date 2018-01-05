@@ -1,17 +1,36 @@
-import express from 'express';
-import http from 'http';
-import path from 'path';
-import routes from './routes/user.route'
-
+const express = require('express');
+const http = require('http');
+const path = require('path');
+const routes = require('./routes/user.route');
+const mongoose = require('mongoose');
 const app = express();
+
+mongoose.connect('mongodb://localhost/chords-web');
+var db = mongoose.connection;
+
+//check db connection
+db.once('open', function() {
+	console.log('Connected to MongoDB');
+});
+
+//check for errors on db
+db.on('errors', function(err) {
+	console.log(err);
+});
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/api', routes);
 
 app.get('*', (req, res) => {
-	app.sendFile(path.join(__dirname, '../client/dist/index.html'));
+	app.sendFile(path.join(__dirname, '.dist/index.html'));
 });
+
+/**
+app.get('/', (req, res) => {
+	res.send();
+});
+*/
 
 /**
  * Get port from environment and store in Express.

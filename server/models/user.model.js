@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-const SongSchema = new mongoose.Schema({
+const songSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -9,19 +9,19 @@ const SongSchema = new mongoose.Schema({
   	type: String
   },
   key: {
-  	type: Number
+  	type: Number,
   	required: true
   },
-  body: [{
-  	chords: {
-  		type: String, 
-  		required: true
-  	}, 
-  	lyrics: {
-  		type: String, 
-  		required: true
-  	}
-  }],
-
-
+  body: {
+  	type: String,
+  	required: true
+  }
 });
+
+songSchema.statics = {
+	getAll() {
+		return Song.find().sort({title: 1});
+	}
+}
+
+module.exports = mongoose.model('Song', songSchema);

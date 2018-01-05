@@ -1,7 +1,8 @@
-import express from 'express';
+const express = require('express');
+const userController = require('../controllers/user.controller')
 
 const router = express.Router();
 
-//todo
+router.route('/').get(userController.getSongs);
 
-export default router;
+module.exports = router;
