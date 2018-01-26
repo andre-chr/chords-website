@@ -16,12 +16,14 @@ const songSchema = new mongoose.Schema({
   	type: String,
   	required: true
   }
-});
-
-songSchema.statics = {
-	getAll() {
-		return Song.find().sort({title: 1});
-	}
-}
+}, { collection: 'Song'});
 
 module.exports = mongoose.model('Song', songSchema);
+
+/**
+Song.statics.getAll = function() {
+	console.log('fuack');
+	return 
+}
+
+*/

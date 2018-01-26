@@ -5,3 +5,6 @@
 *.logs
 logs
 log
+
+#batch files
+*.bat

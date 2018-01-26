@@ -22,15 +22,10 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/api', routes);
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
 	app.sendFile(path.join(__dirname, '.dist/index.html'));
 });
 
-/**
-app.get('/', (req, res) => {
-	res.send();
-});
-*/
 
 /**
  * Get port from environment and store in Express.

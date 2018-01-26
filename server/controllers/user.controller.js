@@ -1,9 +1,9 @@
 const Song = require('../models/user.model');
 
-function getSongs(req, res) {
-	return Song.getAll()
-		.then(songs => res.json(users))
-		.catch(e => next(e));
+module.exports = {
+	getSongs: function(req, res) {
+		Song.find({}, function(err, songs) {
+			res.send(songs);
+		}).sort({title: 1});
+	}
 }
-
-module.exports = getSongs;
