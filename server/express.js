@@ -7,7 +7,7 @@ const app = express();
 
 mongoose.connect('mongodb://localhost/chords-web');
 var db = mongoose.connection;
-
+ 
 //check db connection
 db.once('open', function() {
 	console.log('Connected to MongoDB');
@@ -18,12 +18,12 @@ db.on('errors', function(err) {
 	console.log(err);
 });
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/api', routes);
 
 app.get('/', (req, res) => {
-	app.sendFile(path.join(__dirname, '.dist/index.html'));
+	res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 
