@@ -1,6 +1,9 @@
 #dependencies
 /node_modules/
 
+#build files
+/dist
+
 #logs
 *.logs
 logs
