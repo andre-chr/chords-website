@@ -1,3 +1,5 @@
-<p>
-  songs works!
-</p>
+<ul class="songs">
+	<li *ngFor="let song of songs">
+		{{ song.title }}  {{ song.by }}
+	</li>
+</ul>

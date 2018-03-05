@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SongsComponent } from './songs/songs.component';
 
+import { SongService } from './song.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,13 @@ import { SongsComponent } from './songs/songs.component';
     SongsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+  	SongService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
